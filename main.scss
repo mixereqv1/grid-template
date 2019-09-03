@@ -7,13 +7,18 @@
 .container {
     height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 10% 80% 10%;
-    grid-template-areas: 
-        "header header header header"
-        "sidebarL main main sidebarR"
-        "footer footer footer footer";
+    // grid-template: 10% 80% 10% / 1fr 1fr 1fr 1fr;
+    // grid-template-areas: 
+    //     "header header header header"
+    //     "sidebarL main main sidebarR"
+    //     "footer footer footer footer";
     
+    grid-template: 
+        "header header header header" 10%
+        "sidebarL main main sidebarR" 80%
+        "footer footer footer footer" 10% 
+        / 1fr 1fr 1fr 1fr;
+
     .header {
         grid-area: header;
         background: #067bc2;
