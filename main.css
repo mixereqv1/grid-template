@@ -4,60 +4,104 @@
   box-sizing: border-box;
 }
 
-.container {
-  height: 100vh;
-  display: grid;
-  grid-template: "header header header header" 1fr "sidebar item1 item2 item3" 1fr "sidebar item4 item5 item6" 1fr "sidebar item7 item8 item9" 1fr "sidebar item10 item11 item12" 1fr "footer footer footer footer" 1fr;
-}
-
-.container .card {
-  background: #205fb3;
-  border: 1px solid #000;
+.card {
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  height: 50vh;
+  max-height: 40vh;
+  background: #067bc2;
   position: relative;
   color: #fff;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.container .card .photo {
+.card .info {
+  height: 70%;
   width: 100%;
-}
-
-.container .card .photo__img {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.card .info .price, .card .info .promo {
+  font-size: 1.2em;
+}
+
+.card .info .price {
+  position: absolute;
+  top: .5rem;
+  right: 0;
+}
+
+.card .info .info__img {
+  display: block;
   width: 100%;
-  height: 100%;
 }
 
-.container .card .photo .price {
+.card .info .promo {
   position: absolute;
-  top: 5px;
-  right: 10px;
+  width: 100%;
+  top: 2rem;
+  right: 0;
+  text-align: right;
+  font-weight: bold;
 }
 
-.container .card .photo .colors {
+.card .info .colors {
   position: absolute;
-  top: 25px;
-  right: 5px;
+  bottom: 0;
+  right: .7rem;
+  text-align: right;
+  width: 100%;
+  font-size: 1.2em;
 }
 
-.container .card .photo .colors ul {
+.card .info .colors__title {
+  font-weight: bold;
+}
+
+.card .info .colors .list {
   list-style: none;
 }
 
-.container .card .description {
-  text-align: center;
-  position: relative;
+.card .title {
+  position: absolute;
+  bottom: 2rem;
   width: 100%;
+  text-align: center;
+  font-weight: bold;
 }
 
-.container .card .description .more {
-  text-decoration: none;
-  color: #22b152;
+.card .desc {
+  position: absolute;
+  bottom: .5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.card .link {
+  padding: 5px;
   position: absolute;
   bottom: 0;
-  right: 5px;
+  right: 0;
+  color: lightgray;
+  text-decoration: none;
+  font-size: 1.2em;
+  transition: color .3s ease;
+}
+
+.card .link:hover {
+  color: #fff;
+}
+
+.card .buy {
+  bottom: 1.5rem;
+}
+
+.container {
+  height: 100vh;
+  display: grid;
+  grid-template: "header header header header" 1fr "sidebar item1 item2 item3" 1fr "sidebar item4 item5 item6" 1fr "sidebar item7 item8 item9" 1fr "sidebar item10 item11 item12" 1fr "footer footer footer footer" 1fr;
 }
 
 .container .header {
@@ -76,7 +120,7 @@
   background: #22b152;
 }
 
-.container .card, .container .header, .container .footer, .container .sidebar {
+.container .header, .container .footer, .container .sidebar {
   display: flex;
   justify-content: center;
   align-items: center;
