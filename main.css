@@ -70,6 +70,7 @@
   height: .8em;
   border-radius: 50%;
   background: #fff;
+  border: 1px solid #000;
   margin-right: 5px;
   display: inline-block;
 }
@@ -80,6 +81,7 @@
   height: .8em;
   border-radius: 50%;
   background: #154ea3;
+  border: 1px solid #000;
   margin-right: 5px;
   display: inline-block;
 }
@@ -90,6 +92,7 @@
   height: .8em;
   border-radius: 50%;
   background: #c91c1c;
+  border: 1px solid #000;
   margin-right: 5px;
   display: inline-block;
 }
