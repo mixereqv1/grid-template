@@ -8,22 +8,12 @@
 .container {
     background: #367DD9;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 10rem repeat(4,1fr) 10rem;
-    grid-template-areas:
-        "header header header header"
-        "sidebar item1 item2 item3"
-        "sidebar item4 item5 item6"
-        "sidebar item7 item8 item9"
-        "sidebar item10 item11 item12"
-        "footer footer footer footer";
-    // grid-template:
-    //     "header header header header"10rem
-    //     "sidebar item1 item2 item3"1fr
-    //     "sidebar item4 item5 item6"1fr
-    //     "sidebar item7 item8 item9"1fr
-    //     "sidebar item10 item11 item12"1fr
-    //     "footer footer footer footer"10rem;
+    grid-template:
+        "header header header header"10rem
+        "sidebar item1 item2 item3"1fr
+        "sidebar item4 item5 item6"1fr
+        "sidebar item7 item8 item9"1fr
+        "footer footer footer footer"10rem / 1fr 1fr 1fr 1fr;
 
     .card {
         margin: 2em;
@@ -152,6 +142,10 @@
     .header {
         grid-area: header;
         background: #a86921;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2em;
     }
 
     .sidebar {
