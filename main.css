@@ -7,8 +7,23 @@
 
 .container {
   background: #367DD9;
+  width: 100%;
   display: grid;
-  grid-template: "header header header header" 10rem "sidebar item1 item2 item3" 1fr "sidebar item4 item5 item6" 1fr "sidebar item7 item8 item9" 1fr "footer footer footer footer" 10rem/1fr 1fr 1fr 1fr;
+  grid-template: "header header header header" 10rem "sidebar main main main" 1fr "sidebar main main main" 1fr "sidebar main main main" 1fr "footer footer footer footer" 10rem/1fr 1fr 1fr 1fr;
+}
+
+@media (max-width: 780px) {
+  .container {
+    grid-template: "header" 5rem "sidebar" 5rem "main" 1fr "footer" 5rem/1fr;
+  }
+}
+
+.container .main {
+  display: flex;
+  flex-wrap: wrap;
+  grid-area: main;
+  width: 100%;
+  height: 100%;
 }
 
 .container .card {
@@ -24,6 +39,12 @@
   overflow: hidden;
 }
 
+@media (max-width: 780px) {
+  .container .card {
+    margin: 2rem auto;
+  }
+}
+
 .container .card .image {
   height: 51%;
   width: 100%;
@@ -31,6 +52,7 @@
 
 .container .card .image__img {
   width: 100%;
+  height: 100%;
   border-radius: 1em;
 }
 

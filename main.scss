@@ -7,13 +7,106 @@
 
 .container {
     background: #367DD9;
+    width: 100%;
     display: grid;
+
+    //GRID METHOD
+    // grid-template-columns: repeat(4,1fr);
+    // grid-template-rows: 10rem repeat(3,1fr) 10rem;
+    // grid-template:
+    //     "header header header header"10rem
+    //     "sidebar item1 item2 item3"1fr
+    //     "sidebar item4 item5 item6"1fr
+    //     "sidebar item7 item8 item9"1fr
+    //     "footer footer footer footer"10rem / 1fr 1fr 1fr 1fr;
+
+    // @media (max-width:1330px) {
+    //     // grid-template-columns: repeat(3,1fr);
+    //     // grid-template-rows: 10rem repeat(5,1fr) 10rem;
+    //     grid-template:
+    //     "header header header"10rem
+    //     "sidebar item1 item2"1fr
+    //     "sidebar item3 item4"1fr
+    //     "sidebar item5 item6"1fr
+    //     "sidebar item5 item8"1fr
+    //     "sidebar item9  ."1fr
+    //     "footer footer footer"10rem / 1fr 1fr 1fr;
+    // }
+
+    // @media (max-width:995px) {
+    //     // grid-template-columns: repeat(2,1fr);
+    //     // grid-template-rows: 10rem repeat(5,1fr) 10rem;
+    //     grid-template:
+    //     "header header"10rem
+    //     "sidebar item1"1fr
+    //     "sidebar item2"1fr
+    //     "sidebar item3"1fr
+    //     "sidebar item4"1fr
+    //     "sidebar item5"1fr
+    //     "sidebar item6"1fr
+    //     "sidebar item7"1fr
+    //     "sidebar item8"1fr
+    //     "sidebar item9"1fr
+    //     "footer footer"10rem / 1fr 1fr;
+    // }
+
+    // @media (max-width:823px) {
+    //     // grid-template-columns: repeat(2,1fr);
+    //     // grid-template-rows: 10rem repeat(5,1fr) 10rem;
+    //     grid-template:
+    //     "header header"10rem
+    //     "sidebar sidebar".5fr
+    //     "item1 item2"1fr
+    //     "item3 item4"1fr
+    //     "item5 item6"1fr
+    //     "item7 item8"1fr
+    //     "item9 ."1fr
+    //     "footer footer"10rem / 1fr 1fr;
+    // }
+
+    // @media (max-width:700px) {
+    //     // grid-template-columns: repeat(2,1fr);
+    //     // grid-template-rows: 10rem repeat(5,1fr) 10rem;
+    //     grid-template:
+    //     "header"5rem
+    //     "sidebar"5rem
+    //     "item1"1fr
+    //     "item2"1fr
+    //     "item3"1fr
+    //     "item4"1fr
+    //     "item5"1fr
+    //     "item6"1fr
+    //     "item7"1fr
+    //     "item8"1fr
+    //     "item9"1fr
+    //     "footer"5rem / 1fr;
+    // }
+
+
+    //FLEXBOX METHOD WITH MAIN TAG
     grid-template:
         "header header header header"10rem
-        "sidebar item1 item2 item3"1fr
-        "sidebar item4 item5 item6"1fr
-        "sidebar item7 item8 item9"1fr
+        "sidebar main main main"1fr
+        "sidebar main main main"1fr
+        "sidebar main main main"1fr
         "footer footer footer footer"10rem / 1fr 1fr 1fr 1fr;
+
+    @media (max-width: 780px) {
+        grid-template:
+            "header"5rem
+            "sidebar"5rem
+            "main"1fr
+            "footer"5rem / 1fr;
+    }
+
+
+    .main {
+        display: flex;
+        flex-wrap: wrap;
+        grid-area: main;
+        width: 100%;
+        height: 100%;
+    }
 
     .card {
         margin: 2em;
@@ -27,12 +120,21 @@
         color: #aaa;
         overflow: hidden;
 
+        // @media (max-width:700px) {
+        //     margin: 2rem auto;
+        // }
+
+        @media (max-width:780px) {
+                margin: 2rem auto;
+        }
+
         .image {
             height: 51%;
             width: 100%;
 
             &__img {
                 width: 100%;
+                height: 100%;
                 border-radius: 1em;
             }
         }
