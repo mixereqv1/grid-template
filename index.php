@@ -19,16 +19,23 @@
             <header class="header">
                 <h1>Salon samochodowy</h1>
             </header>
-            <div class="sidebar">sidebar</div>
+            <div class="sidebar">
+                <form action="index.php" method="POST">
+                    <label for="range">Ilość aut</label>
+                    <input type="number" name="amount" min="1" max="9" placeholder="1-9">
+                    <input type="submit" value="Pokaż" name="submit">
+                </form>
+            </div>
             <main class="main">
                 <?php
-                    for($i=0; $i<9; $i++) {
-                        createTab($i,$name,$description,$price,$promo);
+                    if(isset($_POST['submit'])) {
+                        for($i=0; $i<$_POST['amount']; $i++) {
+                            createTab($i,$name,$description,$price,$promo);
+                        }
                     }
                 ?>
             </main>
             <footer class="footer">footer</footer>
         </div>
-
     </body>
 </html>

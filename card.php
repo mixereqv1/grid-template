@@ -9,22 +9,25 @@
 
     $sql = 'SELECT * FROM cars';
 
+
     //DEFINING ARRAYS
     $name = array();
     $description = array();
     $price = array();
     $promo = array();
 
+
     //FETCHING DATA FROM DB TO ARRAYS
-    if($result = $mysqli ->query($sql)) {
+    if($result = $mysqli -> query($sql)) {
         while($row = $result -> fetch_assoc()) {
-            array_push($name,$row['nazwa']);
-            array_push($description,$row['opis']);
-            array_push($price,$row['cena']);
-            array_push($promo,$row['promocja']);
+            array_push($name,$row['name']);
+            array_push($description,$row['description']);
+            array_push($price,$row['price']);
+            array_push($promo,$row['promo']);
         }
     }
 
+    //CHECKING I FOR EXTENSION OF PHOTO
     function checkI($i) {
         $extension = '';
         if($i == 0) {

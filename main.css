@@ -9,7 +9,7 @@
   background: #367DD9;
   width: 100%;
   display: grid;
-  grid-template: "header header header header" 10rem "sidebar main main main" 1fr "sidebar main main main" 1fr "sidebar main main main" 1fr "footer footer footer footer" 10rem/1fr 1fr 1fr 1fr;
+  grid-template: "header header header header" 10vh "sidebar main main main" 1fr "sidebar main main main" 1fr "sidebar main main main" 1fr "footer footer footer footer" 10vh/1fr 1fr 1fr 1fr;
 }
 
 @media (max-width: 1255px) {
@@ -22,9 +22,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: center;
   grid-area: main;
   width: 100%;
   height: 100%;
+  min-height: 80vh;
 }
 
 .container .card {
@@ -33,7 +35,7 @@
   background: #2955D9;
   min-width: 273px;
   max-width: 400px;
-  min-height: 45vh;
+  height: 45vh;
   border-radius: 6px;
   padding: 1.5rem;
   color: #aaa;
@@ -180,6 +182,20 @@
   min-width: 300px;
   grid-area: sidebar;
   background: #448C30;
+  padding: 2em 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2em;
+}
+
+.container .sidebar form {
+  display: flex;
+  flex-direction: column;
+}
+
+.container .sidebar form label {
+  text-align: center;
 }
 
 .container .footer {
