@@ -1,73 +1,36 @@
 <?php
-    $mysqli = new mysqli('localhost','root','','cars');
+    include_once('connect.php');
+    include_once('index.php');
 
-    //CHECKING FOR ERROR WITH CONNECT
-    if($mysqli -> connect_errno) {
-        printf('Connect failed: %s\n', $mysqli -> connect_error);
-        exit();
+    $select = $_POST['select'];
+    if($select == 'alphabetically') {
+        $sql = "SELECT * FROM cars ORDER BY description";
+    } else if($select == 'affordable_up') {
+        $sql = "SELECT * FROM cars ORDER BY price";
+    } else if($select == 'affordable_down') {
+        $sql = "SELECT * FROM cars ORDER BY price DESC";
+    } else if($select == 'promotionally_up') {
+        $sql = "SELECT * FROM cars ORDER BY promo";
+    } else if($select == 'promotionally_down') {
+        $sql = "SELECT * FROM cars ORDER BY promo DESC";
     }
 
-    $sql = 'SELECT * FROM cars';
-
-
     //DEFINING ARRAYS
-    $name = array();
+    $photo = array();
     $description = array();
     $price = array();
     $promo = array();
 
+    $submit_btn = $_POST['submit_sort'];
+    $amount_to_show = $_POST['amount'];
 
     //FETCHING DATA FROM DB TO ARRAYS
     if($result = $mysqli -> query($sql)) {
         while($row = $result -> fetch_assoc()) {
-            array_push($name,$row['name']);
+            array_push($photo,$row['photo']);
             array_push($description,$row['description']);
             array_push($price,$row['price']);
             array_push($promo,$row['promo']);
         }
-    }
-
-    //CHECKING I FOR EXTENSION OF PHOTO
-    function checkI($i) {
-        $extension = '';
-        if($i == 0) {
-            $extension = 'png';
-        } else if($i == 4) {
-            $extension = 'jpeg';
-        } else {
-            $extension = 'jpg';
-        }
-        return $extension;
-    }
-
-    function createTab($i,$name,$description,$price,$promo) {
-        echo('
-            <div class="item card">
-                <div class="image">
-                    <img src="'.$name[$i].'.'.checkI($i).'" alt="'.$name[$i].'" class="image__img">
-                </div>
-                <div class="description">
-                    <span class="description__content">'.$description[$i].'</span>
-                    <div class="colors">
-                        <ul class="colors__list">
-                            Dostępne kolory:
-                            <li>Biały</li>
-                            <li>Niebieski</li>
-                            <li>Czerwony</li>
-                        </ul>
-                    </div>
-                    <div class="price">
-                        <span class="price__value">Cena: <span>'.$price[$i].'zł</span></span>
-                        <span class="price__promo">Promocja <span>-'.$promo[$i].'%</span></span>
-                    </div>
-                    <div class="buy">
-                        <a class="buy__link" href="#">Kup teraz!</a>
-                    </div>
-                    <div class="more">
-                        <a class="more__link" href="#">Zobacz więcej!</a>
-                    </div>
-                </div>
-            </div>
-        ');
     }
 ?>

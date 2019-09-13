@@ -9,12 +9,12 @@
   background: #367DD9;
   width: 100%;
   display: grid;
-  grid-template: "header header header header" 10vh "sidebar main main main" 1fr "sidebar main main main" 1fr "sidebar main main main" 1fr "footer footer footer footer" 10vh/1fr 1fr 1fr 1fr;
+  grid-template: "header header header header" 10vh "sidebar main main main" 1fr "footer footer footer footer" 10vh/1fr 1fr 1fr 1fr;
 }
 
 @media (max-width: 1255px) {
   .container {
-    grid-template: "header" 5rem "sidebar" 5rem "main" 1fr "footer" 5rem/1fr;
+    grid-template: "header" 8rem "sidebar" auto "main" 1fr "footer" 5rem/1fr;
   }
 }
 
@@ -36,6 +36,7 @@
   min-width: 273px;
   max-width: 400px;
   height: 45vh;
+  min-height: 400px;
   border-radius: 6px;
   padding: 1.5rem;
   color: #aaa;
@@ -180,22 +181,71 @@
 
 .container .sidebar {
   min-width: 300px;
+  min-height: 15rem;
   grid-area: sidebar;
   background: #448C30;
-  padding: 2em 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 1.2em;
+  padding-bottom: .5em;
 }
 
-.container .sidebar form {
+.container .sidebar .amount_of_cars {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1255px) {
+  .container .sidebar .amount_of_cars {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.container .sidebar .amount_of_cars input {
+  width: 50px;
+  margin: .5em 0 .5em 0;
+  width: 100%;
+}
+
+@media (max-width: 1255px) {
+  .container .sidebar .amount_of_cars input {
+    width: 60%;
+  }
+}
+
+.container .sidebar .amount_of_cars label {
+  text-align: center;
+  margin-top: .2em;
+}
+
+@media (max-width: 1255px) {
+  .container .sidebar .amount_of_cars label {
+    margin-bottom: 0;
+    margin-right: .5em;
+  }
+}
+
+.container .sidebar .add__car {
+  margin-top: 1em;
   display: flex;
   flex-direction: column;
 }
 
-.container .sidebar form label {
-  text-align: center;
+@media (max-width: 1255px) {
+  .container .sidebar .add__car {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.container .sidebar .add__car input {
+  min-width: 250px;
+  padding: 5px;
+  margin: .2em;
 }
 
 .container .footer {
