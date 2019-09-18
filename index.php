@@ -1,10 +1,31 @@
 <?php
+    session_start();
+    $_SESSION['logged_in'] = 'false';
+    $_SESSION['wrong_data'] = 'false';
+
     include_once('card.php');
     include_once('connect.php');
     include('functions.php');
     $sql = "SELECT id FROM cars ORDER BY id DESC LIMIT 1";
     $result = $mysqli -> query($sql);
     $amount_of_cars = $result -> fetch_assoc()['id'];
+
+    if(isset($_GET['action']) && $_GET['action'] == 'logout') {
+        $_SESSION['logged_in'] == 'false';
+        unset($_SESSION['login']);
+        unset($_SESSION['password']);
+    }
+
+    if(isset($_POST['sign_in'])) {
+        if(isset($_POST['login']) && $_POST['login'] == 'admin' && isset($_POST['password']) && $_POST['password'] == 'admin') {
+            $_SESSION['logged_in'] = 'true';
+            $_SESSION['wrong_data'] = 'false';
+        } else {
+            $_SESSION['logged_in'] = 'false';
+            $_SESSION['wrong_data'] = 'true';
+        }
+    }
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,12 +60,18 @@
                     <input type="submit" name="submit_sort" value="Pokaż">
                 </form>
 
+                <?php 
+                    if($_SESSION['logged_in'] == 'true') {
+                ?>
+
                 <form class="add__car" action="add__car.php" method="POST">
                     <input type="text" name="car__description" placeholder="Opis" required>
                     <input type="number" name="car__price" placeholder="Cena" required>
                     <input type="number" name="car__promo" placeholder="Promocja w %" required>
                     <input type="submit" value="Dodaj">
                 </form>
+
+                <?php } ?>
             </div>
             <main class="main">
                 <?php
@@ -55,7 +82,31 @@
                     }
                 ?>
             </main>
-            <footer class="footer">footer</footer>
+            <footer class="footer">
+                 <?php
+                    if(isset($_GET['action']) && $_GET['action'] == 'logout') {
+                        echo('<span class="logged__out">Logged out correctly</span>');
+                    }
+
+                    if($_SESSION['wrong_data'] == 'true') {
+                        echo('<span class="wrong__data">Incorrect login/password</span>');
+                    }
+
+                    if($_SESSION['logged_in'] == 'false') {
+                 ?>
+                    <form action="index.php" method="POST">
+                        <label for="login">Login:</label>
+                        <input type="text" name="login" id="login" required>
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" required>
+                        <input type="submit" value="Sign in" name="sign_in">
+                    </form>
+                <?php } else { ?>
+
+                    <a class="logout__button" href="index.php?action=logout">Logout</a>
+
+                <?php } ?>
+            </footer>
         </div>
     </body>
 </html>
